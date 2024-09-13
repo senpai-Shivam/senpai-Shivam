@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #no {
+            position: absolute;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .footer img {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Do you like me?</h1>
+        <div id="buttons">
+            <button class="button" id="yes">Yes</button>
+            <button class="button" id="no">No</button>
+        </div>
+        <p id="message"></p>
+    </div>
+    <div class="footer">
+        <p>Code by</p>
+        <a href="https://t.me/Deki_sama" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        </a>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yes');
+        const noButton = document.getElementById('no');
+        const message = document.getElementById('message');
+        const buttonsContainer = document.getElementById('buttons');
+
+        yesButton.addEventListener('click', () => {
+            message.textContent = 'Code by Deki Sama';
+        });
+
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
+            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+
+            const newYesButton = yesButton.cloneNode(true);
+            buttonsContainer.appendChild(newYesButton);
+            newYesButton.addEventListener('click', () => {
+                message.textContent = 'Code by Deki Sama';
+            });
+        });
+    </script>
+</body>
+</html>
